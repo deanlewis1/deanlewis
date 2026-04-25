@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dean Lewis - Official Music Website. Listen to the latest releases, watch music videos, and stay updated with tour dates.">
+    <meta property="og:title" content="DEAN LEWIS - Official Music Website">
+    <meta property="og:description" content="Discover Dean Lewis's latest music, videos, and tour dates.">
+    <meta property="og:type" content="website">
+    <title>DEAN LEWIS - Official Music</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton:ital,wght@0,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #f0f0f0;
+            --background: #f8f8f8;
+            --card: #ffffff;
+            --foreground: #1a1a1a;
+            --muted-foreground: #666666;
+            --accent: #6366f1;
+            --border: #e5e5e5;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Anton', sans-serif;
+            font-weight: bold;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(248, 248, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: 'Anton', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-menu {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--foreground);
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: flex;
+            }
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 0.4rem;
+            border: none;
+            background: none;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 1.5rem;
+            height: 2px;
+            background: var(--foreground);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(0.5rem, 0.5rem);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(0.5rem, -0.5rem);
+        }
+
+        @media (min-width: 768px) {
+            .hamburger {
+                display: none;
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 4rem;
+            left: 0;
+            right: 0;
+            background: var(--background);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 40;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--foreground);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            margin-top: 4rem;
+            padding: 5rem 0;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                min-height: 700px;
+                padding: 6rem 0;
+            }
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(248, 248, 248, 1), rgba(248, 248, 248, 0.5), transparent);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 40rem;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            border: 2px solid var(--accent);
+            background: transparent;
+            color: var(--foreground);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: #4f46e5;
+            border-color: #4f46e5;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 8rem 0;
+            }
+        }
+
+        .section-video {
+            background: var(--card);
+        }
+
+        .section-music {
+            background: var(--background);
+        }
+
+        .section-exclusive {
+            background: var(--card);
+        }
+
+        .section-connect {
+            background: var(--background);
+        }
+
+        .section-support {
+            background: var(--card);
+        }
+
+        .section-newsletter {
+            background: var(--background);
+        }
+
+        .section-tour {
+            background: var(--card);
+        }
+
+        .video-container {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-caption {
+            text-align: center;
+            color: var(--muted-foreground);
+            margin-top: 1.5rem;
+        }
+
+        /* Music Grid */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .album-card {
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease;
+        }
+
+        .album-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .album-image {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .album-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .album-card:hover .album-image img {
+            transform: scale(1.05);
+        }
+
+        .album-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .album-card:hover .album-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            width: 4rem;
+            height: 4rem;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--foreground);
+        }
+
+        /* Exclusive Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card-item {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-family: 'Anton', sans-serif;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .card-features li {
+            margin-bottom: 0.75rem;
+            color: var(--muted-foreground);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-features li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Connect Section */
+        .connect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .connect-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .connect-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-color: var(--accent);
+        }
+
+        .connect-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .connect-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .connect-card p {
+            color: var(--muted-foreground);
+            margin-bottom: 1.5rem;
+        }
+
+        .connect-link {
+            color: var(--accent);
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        /* Support Card */
+        .support-card {
+            max-width: 40rem;
+            margin: 0 auto;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .support-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .support-email {
+            display: inline-block;
+            background: var(--background);
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .support-email:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Newsletter */
+        .newsletter-container {
+            max-width: 40rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            margin-top: 2rem;
+        }
+
+        .email-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .email-input-group {
+                flex-direction: row;
+            }
+        }
+
+        .email-input {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 9999px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .email-input:focus {
+            border-color: var(--accent);
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            text-align: left;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            cursor: pointer;
+        }
+
+        .checkbox-label input {
+            margin-top: 0.25rem;
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 1rem;
+            color: #16a34a;
+            font-weight: 600;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            padding: 1rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card);
+            width: 100%;
+            max-width: 500px;
+            border-radius: 1rem;
+            padding: 2.5rem;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--muted-foreground);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--foreground);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-top: 1rem;
+        }
+
+        .modal-header h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .modal-header p {
+            color: var(--muted-foreground);
+            font-size: 0.95rem;
+        }
+
+        .plan-details {
+            background: var(--background);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .plan-description {
+            color: var(--muted-foreground);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .payment-section {
+            margin-bottom: 2rem;
+        }
+
+        .payment-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .qr-code-container {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .qr-code-container img {
+            max-width: 200px;
+            width: 100%;
+            border-radius: 0.5rem;
+            border: 2px solid var(--border);
+            padding: 10px;
+            background: white;
+        }
+
+        .bitcoin-address {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--foreground);
+        }
+
+        .copy-button {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .copy-button:hover {
+            background: #4f46e5;
+        }
+
+        .copy-button.copied {
+            background: #16a34a;
+        }
+
+        .paid-button {
+            width: 100%;
+            padding: 0.75rem;
+            background: transparent;
+            color: var(--foreground);
+            border: 2px solid var(--accent);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .paid-button:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .paid-button.confirmed {
+            background: #16a34a;
+            color: white;
+            border-color: #16a34a;
+        }
+
+        .payment-instructions {
+            background: var(--background);
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            border-radius: 0.25rem;
+            font-size: 0.9rem;
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            background: var(--card);
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: var(--background);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .footer-text {
+            text-align: center;
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            .hero {
+                min-height: 500px;
+                padding: 3rem 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .music-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .plan-price {
+                font-size: 2rem;
+            }
+
+            .support-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">DEAN LEWIS</div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#music">Music</a></li>
+                <li><a href="#exclusive">Exclusive Cards</a></li>
+                <li><a href="#connect">Connect</a></li>
+                <li><a href="#support">Support</a></li>
+                <li><a href="#newsletter">Newsletter</a></li>
+                <li><a href="#tour">Tour</a></li>
+            </ul>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#videos">Videos</a>
+            <a href="#music">Music</a>
+            <a href="#exclusive">Exclusive Cards</a>
+            <a href="#connect">Connect</a>
+            <a href="#support">Support</a>
+            <a href="#newsletter">Newsletter</a>
+            <a href="#tour">Tour</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <img src="https://images.squarespace-cdn.com/content/v1/681a1f0500a6ee408ab97a2f/45e3abf9-8acd-44ab-9fad-a9445c435b28/20210329+-+Dean+LewisBTS_JAREDLEIBOWITZ-14.jpg?format=1000w" alt="Dean Lewis">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>SECONDS BEFORE<br>THE SUNRISE</h1>
+                <p>Listen to the latest release</p>
+                <button class="btn" id="listenNowBtn">
+                    ▶ LISTEN NOW
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscription Modal -->
+    <div class="modal-overlay" id="subscriptionModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            
+            <div class="modal-header">
+                <h2>Premium Access</h2>
+                <p>Get exclusive access to all music and content</p>
+            </div>
+
+            <div class="plan-details">
+                <div class="plan-price">$200</div>
+                <div class="plan-description">One-time payment for lifetime access</div>
+                <ul class="card-features" style="text-align: left; margin-top: 1rem;">
+                    <li>Unlimited music streaming</li>
+                    <li>Exclusive content</li>
+                    <li>Early access to new releases</li>
+                    <li>Ad-free experience</li>
+                </ul>
+            </div>
+
+            <div class="payment-section">
+                <h3>Payment via Bitcoin</h3>
+                
+                <div class="payment-instructions">
+                    📱 Scan the QR code below with your Bitcoin wallet, or copy the address and send $200 worth of Bitcoin.
+                </div>
+
+                <div class="qr-code-container">
+                    <img id="qrCodeImage" src="bitcoin_qr_code.jpg" alt="Bitcoin QR Code">
+                </div>
+
+                <div class="bitcoin-address">
+                    bc1qu5w30jlq7wc53sp0guvsvu8vv0hgfae8zj708e
+                </div>
+
+                <button class="copy-button" id="copyBtnMain">
+                    📋 Copy Bitcoin Address
+                </button>
+
+                <button class="paid-button" id="paidBtnMain">
+                    I Have Paid
+                </button>
+            </div>
+
+            <div style="text-align: center; color: var(--muted-foreground); font-size: 0.85rem; margin-top: 1.5rem;">
+                After payment, please allow 24 hours for access to be granted.
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Section -->
+    <section class="section-video" id="videos">
+        <div class="container">
+            <h2 style="text-align: center;">LATEST VIDEO</h2>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/vtuqQ3MBEyQ" allowfullscreen></iframe>
+                </div>
+                <p class="video-caption">Enjoy It While It Lasts - Official Music Video</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Catalog -->
+    <section class="section-music" id="music">
+        <div class="container">
+            <h2 style="text-align: center;">DISCOGRAPHY</h2>
+            <div class="music-grid">
+                <a href="https://deanlewis.lnk.to/26IAGW" target="_blank" rel="noopener noreferrer" class="album-card">
+                    <div class="album-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/681a1f0500a6ee408ab97a2f/eda3da5b-2d7b-481b-913c-ed414544c3ab/%23+IAGW+COVER+ART+FINAL.jpg?format=500w" alt="I Am Getting Well">
+                        <div class="album-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <h3>I Am Getting Well</h3>
+                </a>
+
+                <a href="https://deanlewis.lnk.to/26EIWIL" target="_blank" rel="noopener noreferrer" class="album-card">
+                    <div class="album-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/681a1f0500a6ee408ab97a2f/fe311f3d-8822-45ab-ab88-be964cd00e8d/%23+EIWIL+COVER+ART+-+APPROVED.jpg?format=500w" alt="Enjoy It While It Lasts">
+                        <div class="album-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <h3>Enjoy It While It Lasts</h3>
+                </a>
+
+                <a href="https://deanlewis.lnk.to/apwk-out-nowWE" target="_blank" rel="noopener noreferrer" class="album-card">
+                    <div class="album-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/681a1f0500a6ee408ab97a2f/393aaabc-3f19-4327-977c-1222337919b6/APWK.png?format=500w" alt="A Place We Knew">
+                        <div class="album-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <h3>A Place We Knew</h3>
+                </a>
+
+                <a href="https://deanlewis.lnk.to/TheEpilogue_DeluxeWE" target="_blank" rel="noopener noreferrer" class="album-card">
+                    <div class="album-image">
+                        <img src="https://images.squarespace-cdn.com/content/v1/681a1f0500a6ee408ab97a2f/ae674c4e-ea87-4af1-9f03-f0e5c6931906/EPILOGUE+DELUXE.jpg?format=500w" alt="The Epilogue">
+                        <div class="album-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                    <h3>The Epilogue</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exclusive Cards Section -->
+    <section class="section-exclusive" id="exclusive">
+        <div class="container">
+            <h2 style="text-align: center;">EXCLUSIVE CARDS</h2>
+            <p style="text-align: center; color: var(--muted-foreground); max-width: 600px; margin: 0 auto 3rem;">Get closer to the music with our exclusive collector cards. Unlock special perks, memberships, and once-in-a-lifetime experiences.</p>
+            
+            <div class="cards-grid">
+                <!-- Fan Card -->
+                <div class="card-item">
+                    <div>
+                        <div class="card-icon">💎</div>
+                        <h3 class="card-title">Fan Card</h3>
+                        <div class="card-price">$1,000</div>
+                        <ul class="card-features">
+                            <li>Official Digital Fan Certificate</li>
+                            <li>Early access to ticket sales</li>
+                            <li>Exclusive digital wallpapers</li>
+                            <li>10% discount on official merch</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary buy-card-btn" data-card="Fan Card" data-price="$1,000">Purchase Now</button>
+                </div>
+
+                <!-- Membership Card -->
+                <div class="card-item" style="border-color: var(--accent); transform: scale(1.05); box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);">
+                    <div>
+                        <div class="card-icon">👑</div>
+                        <h3 class="card-title">Membership Card</h3>
+                        <div class="card-price">$1,500</div>
+                        <ul class="card-features">
+                            <li>All Fan Card benefits</li>
+                            <li>Access to private Discord server</li>
+                            <li>Monthly exclusive live streams</li>
+                            <li>Limited edition physical card</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary buy-card-btn" data-card="Membership Card" data-price="$1,500">Purchase Now</button>
+                </div>
+
+                <!-- Meet & Greet Card -->
+                <div class="card-item">
+                    <div>
+                        <div class="card-icon">🤝</div>
+                        <h3 class="card-title">Meet & Greet Card</h3>
+                        <div class="card-price">$2,000</div>
+                        <ul class="card-features">
+                            <li>All Membership benefits</li>
+                            <li>One VIP Meet & Greet pass</li>
+                            <li>Backstage tour at selected shows</li>
+                            <li>Signed tour lithograph</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary buy-card-btn" data-card="Meet & Greet Card" data-price="$2,000">Purchase Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect Section -->
+    <section class="section-connect" id="connect">
+        <div class="container">
+            <h2 style="text-align: center;">CONNECT WITH DEAN</h2>
+            <p style="text-align: center; color: var(--muted-foreground); max-width: 600px; margin: 0 auto 3rem;">Reach out directly to Dean Lewis to connect, share your stories, or just say hello.</p>
+            
+            <div class="connect-grid">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/+18167940907" target="_blank" rel="noopener noreferrer" class="connect-card">
+                    <div class="connect-icon">💬</div>
+                    <h3>WhatsApp</h3>
+                    <p>Chat directly on WhatsApp</p>
+                    <div class="connect-link">+1 (816) 794-0907</div>
+                </a>
+
+                <!-- Email 1 -->
+                <a href="mailto:grantloaney962@gmail.com" class="connect-card">
+                    <div class="connect-icon">📧</div>
+                    <h3>Email Address</h3>
+                    <p>Send a personal message</p>
+                    <div class="connect-link">grantloaney962@gmail.com</div>
+                </a>
+
+                <!-- Email 2 -->
+                <a href="mailto:idean8896@gmail.com" class="connect-card">
+                    <div class="connect-icon">✉️</div>
+                    <h3>Alternative Email</h3>
+                    <p>Secondary contact address</p>
+                    <div class="connect-link">idean8896@gmail.com</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Management Support Section -->
+    <section class="section-support" id="support">
+        <div class="container">
+            <h2 style="text-align: center;">MANAGEMENT SUPPORT</h2>
+            <div class="support-card">
+                <div class="support-icon">✉️</div>
+                <h3>Need Assistance?</h3>
+                <p style="margin-top: 1rem; color: var(--muted-foreground); font-size: 1.1rem;">
+                    Here we can help you out on purchasing. We do accept gift cards and Bitcoin, so contact us for any help.
+                </p>
+                <a href="mailto:management27883@gmail.com" class="support-email">
+                    management27883@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div class="modal-overlay" id="paymentModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closePaymentModal">&times;</button>
+            
+            <div class="modal-header">
+                <h2 id="modalCardTitle">Purchase Card</h2>
+                <p>Complete your payment via Bitcoin to receive your card</p>
+            </div>
+
+            <div class="plan-details">
+                <div class="plan-price" id="modalCardPrice">$0</div>
+                <div class="plan-description">One-time payment via Bitcoin</div>
+            </div>
+
+            <div class="payment-section">
+                <h3>Payment via Bitcoin</h3>
+                
+                <div class="payment-instructions">
+                    📱 Scan the QR code below with your Bitcoin wallet, or copy the address and send the equivalent amount in Bitcoin.
+                </div>
+
+                <div class="qr-code-container">
+                    <img id="paymentQrCode" src="bitcoin_qr_code.jpg" alt="Bitcoin QR Code">
+                </div>
+
+                <div class="bitcoin-address" id="paymentAddress">
+                    bc1qu5w30jlq7wc53sp0guvsvu8vv0hgfae8zj708e
+                </div>
+
+                <button class="copy-button" id="copyAddressBtn">
+                    📋 Copy Bitcoin Address
+                </button>
+
+                <button class="paid-button" id="paidBtnCard">
+                    I Have Paid
+                </button>
+            </div>
+
+            <div style="text-align: center; color: var(--muted-foreground); font-size: 0.85rem; margin-top: 1.5rem;">
+                After payment, please allow 24 hours for your card and benefits to be activated.
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="section-newsletter" id="newsletter">
+        <div class="container">
+            <div class="newsletter-container">
+                <h2>STAY UPDATED</h2>
+                <p>Subscribe and never miss out on the latest news</p>
+                
+                <form class="newsletter-form" id="newsletterForm">
+                    <div class="email-input-group">
+                        <input type="email" class="email-input" id="emailInput" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" required>
+                        <span>I agree to sign up to the Dean Lewis mailing list and receive updates about new music and tour dates.</span>
+                    </label>
+
+                    <div class="success-message" id="successMessage">
+                        ✓ Thanks for subscribing!
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Section -->
+    <section class="section-tour" id="tour">
+        <div class="container">
+            <div class="newsletter-container">
+                <h2>TOUR DATES & MORE</h2>
+                <p>Get notified about new music releases and tour announcements</p>
+                <a href="https://laylo.com/deanlewis" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    Sign Up to LAYLO
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://open.spotify.com/artist/1234" target="_blank" rel="noopener noreferrer" class="social-icon" title="Spotify">🎵</a>
+                    <a href="https://music.apple.com/artist/1234" target="_blank" rel="noopener noreferrer" class="social-icon" title="Apple Music">🎶</a>
+                    <a href="https://tiktok.com/@deanlewis" target="_blank" rel="noopener noreferrer" class="social-icon" title="TikTok">🎬</a>
+                    <a href="https://instagram.com/deanlewismusic" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram">📷</a>
+                    <a href="https://facebook.com/deanlewismusic" target="_blank" rel="noopener noreferrer" class="social-icon" title="Facebook">👥</a>
+                    <a href="https://twitter.com/deanlewismusic" target="_blank" rel="noopener noreferrer" class="social-icon" title="Twitter">𝕏</a>
+                    <a href="https://youtube.com/@deanlewis" target="_blank" rel="noopener noreferrer" class="social-icon" title="YouTube">▶️</a>
+                </div>
+
+                <div class="footer-text">
+                    <p>&copy; 2026 Dean Lewis. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <span>•</span>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Main Subscription Modal Logic (Listen Now)
+        const listenNowBtn = document.getElementById('listenNowBtn');
+        const subscriptionModal = document.getElementById('subscriptionModal');
+        const closeModal = document.getElementById('closeModal');
+        const copyBtnMain = document.getElementById('copyBtnMain');
+        const paidBtnMain = document.getElementById('paidBtnMain');
+        const btcAddress = 'bc1qu5w30jlq7wc53sp0guvsvu8vv0hgfae8zj708e';
+
+        listenNowBtn.addEventListener('click', () => {
+            subscriptionModal.classList.add('active');
+        });
+
+        closeModal.addEventListener('click', () => {
+            subscriptionModal.classList.remove('active');
+        });
+
+        copyBtnMain.addEventListener('click', () => {
+            navigator.clipboard.writeText(btcAddress).then(() => {
+                const originalText = copyBtnMain.textContent;
+                copyBtnMain.textContent = '✓ Copied!';
+                copyBtnMain.classList.add('copied');
+                setTimeout(() => {
+                    copyBtnMain.textContent = originalText;
+                    copyBtnMain.classList.remove('copied');
+                }, 2000);
+            });
+        });
+
+        paidBtnMain.addEventListener('click', () => {
+            const originalText = paidBtnMain.textContent;
+            paidBtnMain.textContent = '✓ Payment Notified!';
+            paidBtnMain.classList.add('confirmed');
+            setTimeout(() => {
+                paidBtnMain.textContent = originalText;
+                paidBtnMain.classList.remove('confirmed');
+                subscriptionModal.classList.remove('active');
+                alert('Thank you! Your payment notification has been received. Please allow up to 24 hours for verification.');
+            }, 2000);
+        });
+
+        // Payment Modal Logic (Exclusive Cards)
+        const paymentModal = document.getElementById('paymentModal');
+        const closePaymentModal = document.getElementById('closePaymentModal');
+        const modalCardTitle = document.getElementById('modalCardTitle');
+        const modalCardPrice = document.getElementById('modalCardPrice');
+        const copyAddressBtn = document.getElementById('copyAddressBtn');
+        const paidBtnCard = document.getElementById('paidBtnCard');
+
+        document.querySelectorAll('.buy-card-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cardName = btn.getAttribute('data-card');
+                const cardPrice = btn.getAttribute('data-price');
+                modalCardTitle.textContent = `Purchase ${cardName}`;
+                modalCardPrice.textContent = cardPrice;
+                paymentModal.classList.add('active');
+            });
+        });
+
+        closePaymentModal.addEventListener('click', () => {
+            paymentModal.classList.remove('active');
+        });
+
+        copyAddressBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(btcAddress).then(() => {
+                const originalText = copyAddressBtn.textContent;
+                copyAddressBtn.textContent = '✓ Copied!';
+                copyAddressBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyAddressBtn.textContent = originalText;
+                    copyAddressBtn.classList.remove('copied');
+                }, 2000);
+            });
+        });
+
+        paidBtnCard.addEventListener('click', () => {
+            const originalText = paidBtnCard.textContent;
+            paidBtnCard.textContent = '✓ Payment Notified!';
+            paidBtnCard.classList.add('confirmed');
+            setTimeout(() => {
+                paidBtnCard.textContent = originalText;
+                paidBtnCard.classList.remove('confirmed');
+                paymentModal.classList.remove('active');
+                alert('Thank you! Your payment notification has been received. Please allow up to 24 hours for verification.');
+            }, 2000);
+        });
+
+        // Global Modal Close Logic
+        window.addEventListener('click', (e) => {
+            if (e.target === subscriptionModal) {
+                subscriptionModal.classList.remove('active');
+            }
+            if (e.target === paymentModal) {
+                paymentModal.classList.remove('active');
+            }
+        });
+
+        // Newsletter Form
+        const newsletterForm = document.getElementById('newsletterForm');
+        const emailInput = document.getElementById('emailInput');
+        const successMessage = document.getElementById('successMessage');
+
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (emailInput.value) {
+                successMessage.classList.add('show');
+                emailInput.value = '';
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 3000);
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
